@@ -323,7 +323,7 @@ function App() {
 
   const handlePaymentSuccess = async () => {
     try { 
-        await fetch('http://127.0.0.1:5000/api/start_challenge', { method: 'POST' })
+        await fetch('https://tradesense-platform.onrender.com/api/start_challenge', { method: 'POST' })
         await fetchAccount()
         setView('dashboard') 
     } catch (e) { console.error("Erreur start challenge", e) }
@@ -331,7 +331,7 @@ function App() {
 
   const fetchAccount = async () => { 
       try { 
-          const res = await fetch('http://127.0.0.1:5000/api/account')
+          const res = await fetch('https://tradesense-platform.onrender.com/api/account')
           const data = await res.json()
           if(data) setAccount(data) 
       } catch (e) { console.error(e) } 
@@ -339,7 +339,7 @@ function App() {
 
   const fetchPrice = async (ticker, setFunction) => { 
       try { 
-          const response = await fetch(`http://127.0.0.1:5000/api/price/${ticker}`)
+          const response = await fetch(`https://tradesense-platform.onrender.com/api/price/${ticker}`)
           const data = await response.json()
           setFunction(data) 
       } catch (e) { console.error(e) } 
@@ -348,7 +348,7 @@ function App() {
   const handleTrade = async (ticker, type) => {
     if (!account) return
     try {
-      const res = await fetch('http://127.0.0.1:5000/api/trade', { 
+      const res = await fetch('https://tradesense-platform.onrender.com/api/trade', { 
           method: 'POST', 
           headers: { 'Content-Type': 'application/json' }, 
           body: JSON.stringify({ ticker, type, amount: 500 }) 
